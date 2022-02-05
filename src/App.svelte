@@ -1,30 +1,34 @@
 <script lang="ts">
-	export let name: string;
+  import BookmarkRow from "./BookmarkRow.svelte";
+  import {generateBookmarks} from "./data-generator";
+
+  let bookmarks = generateBookmarks(30);
+
+  let bookmarksPromise: Promise<Bookmark[]> = Promise.resolve(bookmarks as Bookmark[]);
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+  {#await bookmarksPromise then bookmarks}
+    <div class="counter">
+      <span>{bookmarks.length} bookmarks</span>
+    </div>
+    {#each bookmarks as bookmark}
+      <BookmarkRow bookmark={bookmark}/>
+    {/each}
+  {/await}
 </main>
 
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
+  main {
+    display: flex;
+    flex-direction: column;
+  }
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
+  .counter {
+    display: flex;
+    justify-content: center;
+    color: #828282;
+    font-size: 0.8rem;
+    margin: 0.4rem;
+  }
 </style>

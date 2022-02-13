@@ -2,21 +2,23 @@
   export let bookmark;
 </script>
 
-<main>
+<div class="content">
   <div class="title">
     <span>{bookmark.title}</span>
   </div>
   <a class="link" target="_blank" rel="noopener noreferrer" href={bookmark.url}>{bookmark.url}</a>
-</main>
+</div>
 
 <style>
-  main {
+  .content {
     display: flex;
     flex-direction: column;
     word-break: break-all;
-    padding: 0 8px;
+    padding: 0.5rem 0.6rem;
+  }
 
-    margin-bottom: 1rem;
+  .content:not(:last-child) {
+    border-bottom: solid 1px var(--colors-border);
   }
 
   .title {
@@ -24,7 +26,7 @@
   }
 
   .link {
-    color: #828282;
+    color: var(--colors-text);
     font-size: 0.8rem;
   }
 </style>

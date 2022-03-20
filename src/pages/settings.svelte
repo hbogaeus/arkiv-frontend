@@ -27,8 +27,6 @@
   }
 
   main {
-    width: 100%;
-    height: 100%;
     padding: 0.5rem 0.6rem;
     display: flex;
     flex-direction: column;

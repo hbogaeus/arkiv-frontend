@@ -24,7 +24,10 @@
 
 <style>
   .content {
-    border-top: solid 2px var(--colors-border);
+    grid-area: nav;
+    border-width: 1px 1px 0 1px;
+    border-style: solid;
+    border-color: var(--colors-border);
 
     padding: 0.8rem;
 

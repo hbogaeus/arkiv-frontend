@@ -13,14 +13,22 @@
   main {
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 1fr 4rem;
+    grid-template-columns: 1fr minmax(auto, 1400px) 1fr;
+    grid-template-areas:
+      ". main ."
+      ". nav .";
 
     overflow: hidden;
   }
 
   .main-content {
     overflow-y: auto;
-    flex-grow: 1;
+    border-width: 0 1px 0 1px;
+    border-style: solid;
+    border-color: var(--colors-border);
+
+    grid-area: main;
   }
 </style>

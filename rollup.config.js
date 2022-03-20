@@ -7,6 +7,7 @@ import {terser} from 'rollup-plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import css from 'rollup-plugin-css-only';
+import dev from 'rollup-plugin-dev';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -72,9 +73,17 @@ export default {
     }),
     json(),
 
-    // In dev mode, call `npm run start` once
-    // the bundle has been generated
-    !production && serve(),
+    dev({
+      dirs: [
+        'public'
+      ],
+      proxy: [
+        {
+          from: '/api',
+          to: 'https://arkiv.bogaeus.com/bookmarks'
+        }
+      ]
+    }),
 
     // Watch the `public` directory and refresh the
     // browser on changes when not in production

@@ -13,7 +13,7 @@
   .content {
     display: flex;
     flex-direction: column;
-    word-break: break-all;
+    word-break: break-word;
     padding: 0.5rem 0.6rem;
   }
 
